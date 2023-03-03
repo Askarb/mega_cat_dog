@@ -19,7 +19,15 @@ class _HomePageScreenState extends State<HomePageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: CustomSlidingToggle(
+          leftLabel: 'Dogs',
+          rightLabel: 'Cats',
+          onChange: (val) {
+            print(val);
+          },
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -44,8 +52,6 @@ class _HomePageScreenState extends State<HomePageScreen> {
                   },
                   child: const Text('get image'),
                 ),
-                CustomSlidingToggle(
-                    leftLabel: 'Dogs', rightLabel: 'Cats', onChange: (val) {})
               ],
             ),
             const SizedBox(height: 25),
