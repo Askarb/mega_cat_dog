@@ -5,5 +5,6 @@ abstract class GetDogsEvent {}
 
 class GetDataEvent extends GetDogsEvent {
   final int count;
-  GetDataEvent({required this.count});
+  final bool isDog;
+  GetDataEvent({required this.count, required this.isDog});
 }

@@ -10,4 +10,9 @@ class GetDogsSuccess extends GetDogsState {
   GetDogsSuccess({required this.model});
 }
 
+class GetCatsSuccess extends GetDogsState {
+  final CatsModel model;
+  GetCatsSuccess({required this.model});
+}
+
 class GetDogsError extends GetDogsState {}

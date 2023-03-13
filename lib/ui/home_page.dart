@@ -15,7 +15,15 @@ class HomePageScreen extends StatefulWidget {
 
 class _HomePageScreenState extends State<HomePageScreen> {
   int _currentIndex = 0;
-  List<Widget> pages = [DogsPage(), CatsPage()];
+  // List<Widget> pages = [DogsPage(), CatsPage()];
+  List<Widget> pages = [
+    DogsPage(
+      isDog: true,
+    ),
+    DogsPage(
+      isDog: false,
+    )
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +44,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
 }
 
 class DogsPage extends StatefulWidget {
-  const DogsPage({super.key});
+  DogsPage({super.key, required this.isDog});
+  bool isDog;
 
   @override
   State<DogsPage> createState() => _DogsPageState();
@@ -65,6 +74,7 @@ class _DogsPageState extends State<DogsPage> {
                   BlocProvider.of<GetDogsBloc>(context).add(
                     GetDataEvent(
                       count: _currentVal,
+                      isDog: widget.isDog,
                     ),
                   );
                 },
@@ -92,6 +102,17 @@ class _DogsPageState extends State<DogsPage> {
                           fit: BoxFit.fill,
                         ),
                       ),
+                    ),
+                  );
+                } else if (state is GetCatsSuccess) {
+                  return Container(
+                    height: 300,
+                    decoration: const BoxDecoration(
+                      color: Colors.green,
+                    ),
+                    child: Image.network(
+                      state.model.file ?? '',
+                      fit: BoxFit.fill,
                     ),
                   );
                 }

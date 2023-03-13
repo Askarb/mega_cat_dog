@@ -8,7 +8,7 @@ class DioSettings {
 
   Dio dio = Dio(
     BaseOptions(
-      baseUrl: 'https://dog.ceo/api/breeds/image/random/',
+      // baseUrl: '',
       contentType: 'application/json',
       headers: {'Accept': 'application/json'},
       connectTimeout: const Duration(seconds: 20),
